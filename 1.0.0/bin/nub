@@ -1,0 +1,100 @@
+#!/bin/bash
+
+COMMAND=$1
+SUBCOMMAND=$2
+NAME=$3
+OPTION=$4
+
+NUB_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")/../" && pwd)"  # Pasta raiz do nub-local atual
+PROJECT_DIR=""
+
+# Ler versão do arquivo .version
+VERSION_FILE="$NUB_PATH/bin/.version"
+if [[ -f "$VERSION_FILE" ]]; then
+  VERSION=$(cat "$VERSION_FILE")
+else
+  VERSION="unknown"
+fi
+
+# Nub version
+if [[ -z "$COMMAND" || "$COMMAND" == "--version" || "$COMMAND" == "-v" || "$COMMAND" == "version" || "$COMMAND" == "v" ]]; then
+  echo -e "\033[1;35m"
+  figlet -f slant "NUB"
+  echo -e "\033[0m"
+  echo -e "\033[1;36mVersão $VERSION - by Italo Teofilo\033[0m"
+  echo -e  "\033[1;90mUse 'nub help' para ver os comandos disponíveis.\033[0m"
+  echo ""
+  exit 0
+fi
+
+
+# Nub easter
+if [[ "$COMMAND" == "easter" ]]; then
+  clear
+  echo -e "\033[1;31m"
+  figlet -f slant "NUB"
+  echo -e "\033[1;36mO bootstrapper que você sempre quis...\033[0m"
+  sleep 0.6
+  echo ""
+  echo -e "\033[1;33mCriado por Italo Teofilo para domar o caos criativo dos projetos...\033[0m"
+  sleep 0.6
+  echo -e "\033[1;35mAutomação é liberdade. Organização é poder.\033[0m"
+  sleep 0.6
+  echo ""
+  echo -e "\033[1;32m→ Que os comandos estejam sempre a seu favor. 👾\033[0m"
+  echo ""
+  sleep 0.4
+  echo -e "\033[1;34m[Pressione Ctrl+C para escapar ou continue viajando.]\033[0m"
+  echo ""
+
+  while true; do
+    echo -e "\033[1;36m$(date +%T)  --  Nub está vivo...\033[0m"
+    sleep 1
+  done
+fi
+
+# Nub help
+if [[ -z "$COMMAND" || "$COMMAND" == "--help" || "$COMMAND" == "-h" || "$COMMAND" == "help" || "$COMMAND" == "h" ]]; then
+  echo -e "\033[1;35m"
+  figlet -f slant "NUB"
+  echo -e "\033[0m"
+  sleep 0.2
+  echo -e "\033[1;36mNext-level Universal Bootstrapper\033[0m"
+  sleep 0.1
+  echo ""
+  echo -e "\033[1;33mnub py create <nome> [--with-git]\033[0m    - Cria projeto Python com .venv"
+  sleep 0.05
+  echo -e "\033[1;33mnub gl create <nome> [--with-git]\033[0m    - Cria projeto OpenGL com CMake"
+  sleep 0.05
+  echo -e "\033[1;33mnub start\033[0m                            - Inicia projeto atual (detecta tipo)"
+  echo -e "\033[1;33mnub --version | -v | v | version\033[0m     - Exibe versão e autor"
+  echo -e "\033[1;33mnub --help | -h | h | help\033[0m           - Exibe ajuda"
+  sleep 0.05
+  fi
+  echo ""
+  echo -e "\033[1;32mUse '--with-git' para iniciar com repositório Git\033[0m"
+  exit 0
+fi
+
+
+# Inicialização de projetos
+if [[ "$COMMAND" == "start" ]]; then
+  bash "$NUB_PATH/core/start.sh"
+  exit 0
+fi
+
+# Executa o comando principal e pega o caminho criado
+if [[ "$COMMAND" == "py" ]]; then
+  PROJECT_DIR=$(bash "$NUB_PATH/commands/py.sh" "$SUBCOMMAND" "$NAME")
+elif [[ "$COMMAND" == "gl" ]]; then
+  PROJECT_DIR=$(bash "$NUB_PATH/commands/gl.sh" "$SUBCOMMAND" "$NAME")
+else
+  echo "❌ Comando desconhecido: $COMMAND"
+  echo "Use 'nub help' para ver os comandos disponíveis."
+  exit 1
+fi
+
+# Ações pós-criação se --with-git
+if [[ "$OPTION" == "--with-git" ]]; then
+  bash "$NUB_PATH/core/post_create.sh" "$PROJECT_DIR"
+fi
