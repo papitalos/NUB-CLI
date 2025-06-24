@@ -65,7 +65,6 @@ NUB supports the automatic creation of the following types of projects:
 ## 🎯 Next Steps
 
 - Explore the `nub start` command to launch the current project  
-- Use `nub deploy` (available in the development environment) to update versions
 
 ---
 
