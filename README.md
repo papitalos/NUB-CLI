@@ -6,11 +6,11 @@
 
 ## 🔍 Check your shell and configure NUB-CLI
 
-Para começar, vamos identificar qual shell você está usando (bash ou zsh) e configurar o ambiente corretamente.
+To get started, let's identify which shell you are using (bash or zsh) and configure the environment correctly.
 
 ---
 
-### 1️⃣ Detecte seu shell executando este comando no terminal:
+### 1️⃣ Detect your shell by running this command in the terminal:
 
 ```bash
 echo $SHELL
@@ -18,16 +18,16 @@ echo $SHELL
 
 ---
 
-### 2️⃣ Dependendo do resultado, copie e cole o comando adequado no seu terminal:
+### 2️⃣ Depending on the result, copy and paste the appropriate command in your terminal:
 
-| Shell Detectado | Comando para clonar e configurar NUB-CLI                                  |
-|-----------------|---------------------------------------------------------------------------|
-| `/bin/bash`     | ```bash                                                                   
+| Detected Shell | Command to clone and configure NUB-CLI                                      |
+|----------------|-----------------------------------------------------------------------------|
+| `/bin/bash`    | ```bash                                                                   
 git clone https://github.com/papitalos/NUB-CLI.git ~/NUB-CLI
 echo 'export PATH="$HOME/NUB-CLI/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc
 ```                                                                         |
-| `/bin/zsh`      | ```zsh                                                                    
+| `/bin/zsh`     | ```zsh                                                                    
 git clone https://github.com/papitalos/NUB-CLI.git ~/NUB-CLI
 echo 'export PATH="$HOME/NUB-CLI/bin:$PATH"' >> ~/.zshrc
 source ~/.zshrc
@@ -35,40 +35,40 @@ source ~/.zshrc
 
 ---
 
-### 3️⃣ Pronto! Agora você pode usar o comando `nub` no seu terminal.
+### 3️⃣ Done! Now you can use the `nub` command in your terminal.
 
 ---
 
-## 📦 Projetos suportados atualmente
+## 📦 Currently Supported Project Types
 
-O NUB suporta a criação automática dos seguintes tipos de projeto:
+NUB supports the automatic creation of the following types of projects:
 
 - 🐍 **Python**  
-  - Projeto básico Python com ambiente virtual `.venv` configurado.  
-  - Comando:  
+  - Basic Python project with a configured `.venv` virtual environment.  
+  - Command:  
     ```bash
-    nub py create <nome-do-projeto> [--with-git]
+    nub py create <project-name> [--with-git]
     ```
 
 - 🕹️ **glcore** (OpenGL C++ Project)  
-  - Projeto C++ usando GLFW + GLM + OpenGL configurado com CMake.  
-  - Comando:  
+  - C++ project using GLFW + GLM + OpenGL configured with CMake.  
+  - Command:  
     ```bash
-    nub gl create <nome-do-projeto> [--with-git]
+    nub gl create <project-name> [--with-git]
     ```
 
 ---
 
-## 🎯 Próximos passos
+## 🎯 Next Steps
 
-- Explorar os comandos `nub start` para iniciar o projeto atual  
-- Usar `nub deploy` (disponível no ambiente de desenvolvimento) para atualizar versões
+- Explore the `nub start` command to launch the current project  
+- Use `nub deploy` (available in the development environment) to update versions
 
 ---
 
-## 📚 Documentação e ajuda
+## 📚 Documentation and Help
 
-Para ver a lista completa de comandos e ajuda, execute:
+To see the full list of commands and help, run:
 
 ```bash
 nub help
