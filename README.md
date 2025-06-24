@@ -20,18 +20,21 @@ echo $SHELL
 
 ### 2️⃣ Depending on the result, copy and paste the appropriate command in your terminal:
 
-| Detected Shell | Command to clone and configure NUB-CLI                                      |
-|----------------|-----------------------------------------------------------------------------|
-| `/bin/bash`    | ```bash                                                                   
+### For `/bin/bash` users:
+If you are using Bash, copy and paste the following commands in your terminal:
+```bash
 git clone https://github.com/papitalos/NUB-CLI.git ~/NUB-CLI
 echo 'export PATH="$HOME/NUB-CLI/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc
-```                                                                         |
-| `/bin/zsh`     | ```zsh                                                                    
+```
+
+### For `/bin/zsh` users:
+If you are using Zsh, copy and paste the following commands in your terminal:
+```zsh
 git clone https://github.com/papitalos/NUB-CLI.git ~/NUB-CLI
 echo 'export PATH="$HOME/NUB-CLI/bin:$PATH"' >> ~/.zshrc
 source ~/.zshrc
-```                                                                         |
+```
 
 ---
 
@@ -73,9 +76,5 @@ To see the full list of commands and help, run:
 ```bash
 nub help
 ```
+Made with ❤️ by Italo Teofilo
 
----
-
-**Made with ❤️ by Italo Teofilo**
-
----
